@@ -2,6 +2,7 @@ package services
 
 import (
 	"github.com/rezwanul-haque/History-Service/domain/history"
+	"github.com/rezwanul-haque/History-Service/domain/queue"
 	"github.com/rezwanul-haque/History-Service/utils/errors"
 	"time"
 )
@@ -15,6 +16,7 @@ type historyService struct {
 
 type historyServiceInterface interface {
 	GetHistory(string, string, int64, int64) (*history.HistoryResponse, *errors.RestErr)
+	CreateHistory(payload queue.RabbitLocationData) (bool, *errors.RestErr)
 }
 
 func (h *historyService) GetHistory(domain string, user_id string, start_date int64, end_date int64) (*history.HistoryResponse, *errors.RestErr) {
@@ -29,6 +31,14 @@ func (h *historyService) GetHistory(domain string, user_id string, start_date in
 		return nil, getErr
 	}
 	return results, nil
+}
+
+func (h *historyService) CreateHistory(payload queue.RabbitLocationData) (bool, *errors.RestErr) {
+	inserted, err := history.Save(payload)
+	if err != nil {
+		return false, err
+	}
+	return inserted, nil
 }
 
 func convertIntToTimeStamp(date int64) time.Time {
