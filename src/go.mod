@@ -1,4 +1,4 @@
-module github.com/rezwanul-haque/History-Service
+module github.com/rezwanul-haque/History-Service/src
 
 go 1.14
 

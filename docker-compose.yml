@@ -1,0 +1,39 @@
+version: '3.3'
+
+services:
+  mysql:
+    container_name: mysql
+    build:
+      context: ./docker/mysql
+    volumes:
+      - "./db_data:/var/lib/mysql"
+    env_file:
+      - "src/.env"
+    ports:
+      - "3306:3306"
+    tty: true
+  rabbitmq:
+    container_name: rabbitmq_dev
+    build:
+      context: ./docker/rabbitmq
+    restart: always
+    ports:
+      - '5672:5672'
+      - 15672:15672
+    env_file:
+      - "src/.env"
+    volumes:
+      - ./rabbitmq-persistence:/var/lib/rabbitmq/mnesia
+  history_service:
+    container_name: history_service
+    build:
+      context: .
+      dockerfile: ./docker/go/Dockerfile
+    ports:
+      - "8090:8090"
+    env_file:
+      - "src/.env"
+    tty: true
+    depends_on:
+      - mysql
+      - rabbitmq

@@ -1,9 +1,9 @@
 package services
 
 import (
-	"github.com/rezwanul-haque/History-Service/domain/history"
-	"github.com/rezwanul-haque/History-Service/domain/queue"
-	"github.com/rezwanul-haque/History-Service/utils/errors"
+	"github.com/rezwanul-haque/History-Service/src/domain/history"
+	"github.com/rezwanul-haque/History-Service/src/domain/queue"
+	"github.com/rezwanul-haque/History-Service/src/utils/errors"
 	"time"
 )
 

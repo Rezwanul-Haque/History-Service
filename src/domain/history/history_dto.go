@@ -1,6 +1,6 @@
 package history
 
-import "github.com/rezwanul-haque/History-Service/utils/errors"
+import "github.com/rezwanul-haque/History-Service/src/utils/errors"
 
 type History struct {
 	Id                 int64  `json:"id"`

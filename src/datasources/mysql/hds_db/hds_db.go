@@ -4,8 +4,8 @@ import (
 	"database/sql"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/rezwanul-haque/History-Service/logger"
-	"github.com/rezwanul-haque/History-Service/utils/helpers"
+	"github.com/rezwanul-haque/History-Service/src/logger"
+	"github.com/rezwanul-haque/History-Service/src/utils/helpers"
 )
 
 var (

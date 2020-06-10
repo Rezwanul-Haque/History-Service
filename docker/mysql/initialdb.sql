@@ -1,6 +1,8 @@
+CREATE DATABASE IF NOT EXISTS hds_db;
+
 USE hds_db;
 
-SET sql_mode = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
+SET sql_mode = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 CREATE TABLE `location_history` (
                                   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Primary key.',
@@ -14,4 +16,8 @@ CREATE TABLE `location_history` (
                                   KEY `idx_location_history_domain` (`domain`),
                                   KEY `idx_location_history_domain_user_id` (`domain`,`user_id`),
                                   CONSTRAINT `fk_location_history_domain` FOREIGN KEY (`domain`) REFERENCES `ids_db`.`company` (`domain`)
-) ENGINE=InnoDB AUTO_INCREMENT=123 DEFAULT CHARSET=utf8
+) ENGINE=InnoDB AUTO_INCREMENT=123 DEFAULT CHARSET=utf8;
+
+CREATE USER 'root'@'%' IDENTIFIED BY '12345678';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;

@@ -121,6 +121,10 @@ fabric.properties
 !.vscode/extensions.json
 
 ### .env ###
-.env
+src/.env
+
+### Persistence folder ###
+db_data
+rabbitmq-persistence
 
 # End of https://www.gitignore.io/api/go,intellij

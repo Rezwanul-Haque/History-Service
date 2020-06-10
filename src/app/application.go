@@ -2,7 +2,7 @@ package app
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/rezwanul-haque/History-Service/clients/consumer"
+	"github.com/rezwanul-haque/History-Service/src/clients/consumer"
 )
 
 var (

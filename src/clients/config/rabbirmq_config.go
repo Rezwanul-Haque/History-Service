@@ -3,10 +3,10 @@ package config
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/rezwanul-haque/History-Service/domain/queue"
-	"github.com/rezwanul-haque/History-Service/logger"
-	"github.com/rezwanul-haque/History-Service/services"
-	"github.com/rezwanul-haque/History-Service/utils/helpers"
+	"github.com/rezwanul-haque/History-Service/src/domain/queue"
+	"github.com/rezwanul-haque/History-Service/src/logger"
+	"github.com/rezwanul-haque/History-Service/src/services"
+	"github.com/rezwanul-haque/History-Service/src/utils/helpers"
 	"github.com/streadway/amqp"
 	"os"
 )
@@ -41,12 +41,12 @@ func (m *MessagingClient) ConnectToBroker(connectionString string) {
 
 // get connection String
 func GetConnectionString() string {
-	connectionString := fmt.Sprintf("%s://%s:%s@%s:%s/",
+	connectionString := fmt.Sprintf("%s://%s:%s@%s/",
 		helpers.GoDotEnvVariable("RABBITMQ_PROTOCOL"),
 		helpers.GoDotEnvVariable("RABBITMQ_USERNAME"),
 		helpers.GoDotEnvVariable("RABBITMQ_PASSWORD"),
-		helpers.GoDotEnvVariable("RABBITMQ_HOST"),
-		helpers.GoDotEnvVariable("RABBITMQ_PORT"))
+		helpers.GoDotEnvVariable("RABBITMQ_HOST"))
+	//helpers.GoDotEnvVariable("RABBITMQ_PORT")) // Need this for run without docker
 
 	return connectionString
 }

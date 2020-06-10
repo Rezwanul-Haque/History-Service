@@ -1,5 +1,29 @@
 # History Service
+
+# Run the app
+> create .env file in the **src** folder for example check .env.example
+```
+./run.sh
+```
+## If connection refused error occur then
+> This error occur as mysql need some time to initialize but go request to connect 
+> before mysql connection stabilize 
+```
+docker-compose down
+# then
+docker-compose up -d rabbitmq
+docker-compose up -d mysql
+docker-compose up -d history_service
+``` 
+
 ## API:
+### Health check
+> # GET: /api/v1/ping
+> ## **Response:**
+```
+pong
+```
+
 > # GET: /api/v1/history
 
 > ## URL Query Params:

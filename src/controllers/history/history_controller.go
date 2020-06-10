@@ -2,9 +2,9 @@ package history
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/rezwanul-haque/History-Service/domain/history"
-	"github.com/rezwanul-haque/History-Service/services"
-	"github.com/rezwanul-haque/History-Service/utils/errors"
+	"github.com/rezwanul-haque/History-Service/src/domain/history"
+	"github.com/rezwanul-haque/History-Service/src/services"
+	"github.com/rezwanul-haque/History-Service/src/utils/errors"
 	"net/http"
 )
 
